@@ -1,0 +1,1285 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/NamedParameters%3Ctypeof%20startBot%3E",
+  "definitions": {
+    "NamedParameters<typeof startBot>": {
+      "type": "object",
+      "properties": {
+        "browser": {
+          "$ref": "#/definitions/Browser"
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Action"
+          }
+        }
+      },
+      "required": [
+        "browser",
+        "actions"
+      ],
+      "additionalProperties": false
+    },
+    "Browser": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {},
+      "description": "{@link  Browser }  represents a browser instance that is either:\n\n- connected to via  {@link  Puppeteer.connect }  or\n- launched by  {@link  PuppeteerNode.launch } .\n\n {@link  Browser }   {@link  EventEmitter emits }  various events which are documented in the  {@link  BrowserEvent }  enum."
+    },
+    "Action": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/NewPageAction"
+        },
+        {
+          "$ref": "#/definitions/SleepAction"
+        },
+        {
+          "$ref": "#/definitions/GoAction"
+        },
+        {
+          "$ref": "#/definitions/GoBackAction"
+        },
+        {
+          "$ref": "#/definitions/GoForwardAction"
+        },
+        {
+          "$ref": "#/definitions/WaitForFunctionAction"
+        },
+        {
+          "$ref": "#/definitions/WaitForNavigationAction"
+        },
+        {
+          "$ref": "#/definitions/WaitForSelectorAction"
+        },
+        {
+          "$ref": "#/definitions/QuerySelectorAction"
+        },
+        {
+          "$ref": "#/definitions/QuerySelectorAllAction"
+        },
+        {
+          "$ref": "#/definitions/FocusAction"
+        },
+        {
+          "$ref": "#/definitions/TypeAction"
+        },
+        {
+          "$ref": "#/definitions/PressAction"
+        },
+        {
+          "$ref": "#/definitions/ExecAction"
+        },
+        {
+          "$ref": "#/definitions/InjectScriptTagAction"
+        },
+        {
+          "$ref": "#/definitions/InjectStyleTagAction"
+        },
+        {
+          "$ref": "#/definitions/SetCookieAction"
+        },
+        {
+          "$ref": "#/definitions/ConditionAction"
+        },
+        {
+          "$ref": "#/definitions/FinishAction"
+        }
+      ]
+    },
+    "NewPageAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "newPage"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "device": {
+              "$ref": "#/definitions/EnumInput%3C(%22Blackberry%20PlayBook%22%7C%22Blackberry%20PlayBook%20landscape%22%7C%22BlackBerry%20Z30%22%7C%22BlackBerry%20Z30%20landscape%22%7C%22Galaxy%20Note%203%22%7C%22Galaxy%20Note%203%20landscape%22%7C%22Galaxy%20Note%20II%22%7C%22Galaxy%20Note%20II%20landscape%22%7C%22Galaxy%20S%20III%22%7C%22Galaxy%20S%20III%20landscape%22%7C%22Galaxy%20S5%22%7C%22Galaxy%20S5%20landscape%22%7C%22Galaxy%20S8%22%7C%22Galaxy%20S8%20landscape%22%7C%22Galaxy%20S9%2B%22%7C%22Galaxy%20S9%2B%20landscape%22%7C%22Galaxy%20Tab%20S4%22%7C%22Galaxy%20Tab%20S4%20landscape%22%7C%22iPad%22%7C%22iPad%20landscape%22%7C%22iPad%20(gen%206)%22%7C%22iPad%20(gen%206)%20landscape%22%7C%22iPad%20(gen%207)%22%7C%22iPad%20(gen%207)%20landscape%22%7C%22iPad%20Mini%22%7C%22iPad%20Mini%20landscape%22%7C%22iPad%20Pro%22%7C%22iPad%20Pro%20landscape%22%7C%22iPad%20Pro%2011%22%7C%22iPad%20Pro%2011%20landscape%22%7C%22iPhone%204%22%7C%22iPhone%204%20landscape%22%7C%22iPhone%205%22%7C%22iPhone%205%20landscape%22%7C%22iPhone%206%22%7C%22iPhone%206%20landscape%22%7C%22iPhone%206%20Plus%22%7C%22iPhone%206%20Plus%20landscape%22%7C%22iPhone%207%22%7C%22iPhone%207%20landscape%22%7C%22iPhone%207%20Plus%22%7C%22iPhone%207%20Plus%20landscape%22%7C%22iPhone%208%22%7C%22iPhone%208%20landscape%22%7C%22iPhone%208%20Plus%22%7C%22iPhone%208%20Plus%20landscape%22%7C%22iPhone%20SE%22%7C%22iPhone%20SE%20landscape%22%7C%22iPhone%20X%22%7C%22iPhone%20X%20landscape%22%7C%22iPhone%20XR%22%7C%22iPhone%20XR%20landscape%22%7C%22iPhone%2011%22%7C%22iPhone%2011%20landscape%22%7C%22iPhone%2011%20Pro%22%7C%22iPhone%2011%20Pro%20landscape%22%7C%22iPhone%2011%20Pro%20Max%22%7C%22iPhone%2011%20Pro%20Max%20landscape%22%7C%22iPhone%2012%22%7C%22iPhone%2012%20landscape%22%7C%22iPhone%2012%20Pro%22%7C%22iPhone%2012%20Pro%20landscape%22%7C%22iPhone%2012%20Pro%20Max%22%7C%22iPhone%2012%20Pro%20Max%20landscape%22%7C%22iPhone%2012%20Mini%22%7C%22iPhone%2012%20Mini%20landscape%22%7C%22iPhone%2013%22%7C%22iPhone%2013%20landscape%22%7C%22iPhone%2013%20Pro%22%7C%22iPhone%2013%20Pro%20landscape%22%7C%22iPhone%2013%20Pro%20Max%22%7C%22iPhone%2013%20Pro%20Max%20landscape%22%7C%22iPhone%2013%20Mini%22%7C%22iPhone%2013%20Mini%20landscape%22%7C%22JioPhone%202%22%7C%22JioPhone%202%20landscape%22%7C%22Kindle%20Fire%20HDX%22%7C%22Kindle%20Fire%20HDX%20landscape%22%7C%22LG%20Optimus%20L70%22%7C%22LG%20Optimus%20L70%20landscape%22%7C%22Microsoft%20Lumia%20550%22%7C%22Microsoft%20Lumia%20950%22%7C%22Microsoft%20Lumia%20950%20landscape%22%7C%22Nexus%2010%22%7C%22Nexus%2010%20landscape%22%7C%22Nexus%204%22%7C%22Nexus%204%20landscape%22%7C%22Nexus%205%22%7C%22Nexus%205%20landscape%22%7C%22Nexus%205X%22%7C%22Nexus%205X%20landscape%22%7C%22Nexus%206%22%7C%22Nexus%206%20landscape%22%7C%22Nexus%206P%22%7C%22Nexus%206P%20landscape%22%7C%22Nexus%207%22%7C%22Nexus%207%20landscape%22%7C%22Nokia%20Lumia%20520%22%7C%22Nokia%20Lumia%20520%20landscape%22%7C%22Nokia%20N9%22%7C%22Nokia%20N9%20landscape%22%7C%22Pixel%202%22%7C%22Pixel%202%20landscape%22%7C%22Pixel%202%20XL%22%7C%22Pixel%202%20XL%20landscape%22%7C%22Pixel%203%22%7C%22Pixel%203%20landscape%22%7C%22Pixel%204%22%7C%22Pixel%204%20landscape%22%7C%22Pixel%204a%20(5G)%22%7C%22Pixel%204a%20(5G)%20landscape%22%7C%22Pixel%205%22%7C%22Pixel%205%20landscape%22%7C%22Moto%20G4%22%7C%22Moto%20G4%20landscape%22)%3E"
+            },
+            "timezone": {
+              "$ref": "#/definitions/StringInput"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "RefrenceName": {
+      "type": "string"
+    },
+    "EnumInput<(\"Blackberry PlayBook\"|\"Blackberry PlayBook landscape\"|\"BlackBerry Z30\"|\"BlackBerry Z30 landscape\"|\"Galaxy Note 3\"|\"Galaxy Note 3 landscape\"|\"Galaxy Note II\"|\"Galaxy Note II landscape\"|\"Galaxy S III\"|\"Galaxy S III landscape\"|\"Galaxy S5\"|\"Galaxy S5 landscape\"|\"Galaxy S8\"|\"Galaxy S8 landscape\"|\"Galaxy S9+\"|\"Galaxy S9+ landscape\"|\"Galaxy Tab S4\"|\"Galaxy Tab S4 landscape\"|\"iPad\"|\"iPad landscape\"|\"iPad (gen 6)\"|\"iPad (gen 6) landscape\"|\"iPad (gen 7)\"|\"iPad (gen 7) landscape\"|\"iPad Mini\"|\"iPad Mini landscape\"|\"iPad Pro\"|\"iPad Pro landscape\"|\"iPad Pro 11\"|\"iPad Pro 11 landscape\"|\"iPhone 4\"|\"iPhone 4 landscape\"|\"iPhone 5\"|\"iPhone 5 landscape\"|\"iPhone 6\"|\"iPhone 6 landscape\"|\"iPhone 6 Plus\"|\"iPhone 6 Plus landscape\"|\"iPhone 7\"|\"iPhone 7 landscape\"|\"iPhone 7 Plus\"|\"iPhone 7 Plus landscape\"|\"iPhone 8\"|\"iPhone 8 landscape\"|\"iPhone 8 Plus\"|\"iPhone 8 Plus landscape\"|\"iPhone SE\"|\"iPhone SE landscape\"|\"iPhone X\"|\"iPhone X landscape\"|\"iPhone XR\"|\"iPhone XR landscape\"|\"iPhone 11\"|\"iPhone 11 landscape\"|\"iPhone 11 Pro\"|\"iPhone 11 Pro landscape\"|\"iPhone 11 Pro Max\"|\"iPhone 11 Pro Max landscape\"|\"iPhone 12\"|\"iPhone 12 landscape\"|\"iPhone 12 Pro\"|\"iPhone 12 Pro landscape\"|\"iPhone 12 Pro Max\"|\"iPhone 12 Pro Max landscape\"|\"iPhone 12 Mini\"|\"iPhone 12 Mini landscape\"|\"iPhone 13\"|\"iPhone 13 landscape\"|\"iPhone 13 Pro\"|\"iPhone 13 Pro landscape\"|\"iPhone 13 Pro Max\"|\"iPhone 13 Pro Max landscape\"|\"iPhone 13 Mini\"|\"iPhone 13 Mini landscape\"|\"JioPhone 2\"|\"JioPhone 2 landscape\"|\"Kindle Fire HDX\"|\"Kindle Fire HDX landscape\"|\"LG Optimus L70\"|\"LG Optimus L70 landscape\"|\"Microsoft Lumia 550\"|\"Microsoft Lumia 950\"|\"Microsoft Lumia 950 landscape\"|\"Nexus 10\"|\"Nexus 10 landscape\"|\"Nexus 4\"|\"Nexus 4 landscape\"|\"Nexus 5\"|\"Nexus 5 landscape\"|\"Nexus 5X\"|\"Nexus 5X landscape\"|\"Nexus 6\"|\"Nexus 6 landscape\"|\"Nexus 6P\"|\"Nexus 6P landscape\"|\"Nexus 7\"|\"Nexus 7 landscape\"|\"Nokia Lumia 520\"|\"Nokia Lumia 520 landscape\"|\"Nokia N9\"|\"Nokia N9 landscape\"|\"Pixel 2\"|\"Pixel 2 landscape\"|\"Pixel 2 XL\"|\"Pixel 2 XL landscape\"|\"Pixel 3\"|\"Pixel 3 landscape\"|\"Pixel 4\"|\"Pixel 4 landscape\"|\"Pixel 4a (5G)\"|\"Pixel 4a (5G) landscape\"|\"Pixel 5\"|\"Pixel 5 landscape\"|\"Moto G4\"|\"Moto G4 landscape\")>": {
+      "type": "string",
+      "enum": [
+        "Blackberry PlayBook",
+        "Blackberry PlayBook landscape",
+        "BlackBerry Z30",
+        "BlackBerry Z30 landscape",
+        "Galaxy Note 3",
+        "Galaxy Note 3 landscape",
+        "Galaxy Note II",
+        "Galaxy Note II landscape",
+        "Galaxy S III",
+        "Galaxy S III landscape",
+        "Galaxy S5",
+        "Galaxy S5 landscape",
+        "Galaxy S8",
+        "Galaxy S8 landscape",
+        "Galaxy S9+",
+        "Galaxy S9+ landscape",
+        "Galaxy Tab S4",
+        "Galaxy Tab S4 landscape",
+        "iPad",
+        "iPad landscape",
+        "iPad (gen 6)",
+        "iPad (gen 6) landscape",
+        "iPad (gen 7)",
+        "iPad (gen 7) landscape",
+        "iPad Mini",
+        "iPad Mini landscape",
+        "iPad Pro",
+        "iPad Pro landscape",
+        "iPad Pro 11",
+        "iPad Pro 11 landscape",
+        "iPhone 4",
+        "iPhone 4 landscape",
+        "iPhone 5",
+        "iPhone 5 landscape",
+        "iPhone 6",
+        "iPhone 6 landscape",
+        "iPhone 6 Plus",
+        "iPhone 6 Plus landscape",
+        "iPhone 7",
+        "iPhone 7 landscape",
+        "iPhone 7 Plus",
+        "iPhone 7 Plus landscape",
+        "iPhone 8",
+        "iPhone 8 landscape",
+        "iPhone 8 Plus",
+        "iPhone 8 Plus landscape",
+        "iPhone SE",
+        "iPhone SE landscape",
+        "iPhone X",
+        "iPhone X landscape",
+        "iPhone XR",
+        "iPhone XR landscape",
+        "iPhone 11",
+        "iPhone 11 landscape",
+        "iPhone 11 Pro",
+        "iPhone 11 Pro landscape",
+        "iPhone 11 Pro Max",
+        "iPhone 11 Pro Max landscape",
+        "iPhone 12",
+        "iPhone 12 landscape",
+        "iPhone 12 Pro",
+        "iPhone 12 Pro landscape",
+        "iPhone 12 Pro Max",
+        "iPhone 12 Pro Max landscape",
+        "iPhone 12 Mini",
+        "iPhone 12 Mini landscape",
+        "iPhone 13",
+        "iPhone 13 landscape",
+        "iPhone 13 Pro",
+        "iPhone 13 Pro landscape",
+        "iPhone 13 Pro Max",
+        "iPhone 13 Pro Max landscape",
+        "iPhone 13 Mini",
+        "iPhone 13 Mini landscape",
+        "JioPhone 2",
+        "JioPhone 2 landscape",
+        "Kindle Fire HDX",
+        "Kindle Fire HDX landscape",
+        "LG Optimus L70",
+        "LG Optimus L70 landscape",
+        "Microsoft Lumia 550",
+        "Microsoft Lumia 950",
+        "Microsoft Lumia 950 landscape",
+        "Nexus 10",
+        "Nexus 10 landscape",
+        "Nexus 4",
+        "Nexus 4 landscape",
+        "Nexus 5",
+        "Nexus 5 landscape",
+        "Nexus 5X",
+        "Nexus 5X landscape",
+        "Nexus 6",
+        "Nexus 6 landscape",
+        "Nexus 6P",
+        "Nexus 6P landscape",
+        "Nexus 7",
+        "Nexus 7 landscape",
+        "Nokia Lumia 520",
+        "Nokia Lumia 520 landscape",
+        "Nokia N9",
+        "Nokia N9 landscape",
+        "Pixel 2",
+        "Pixel 2 landscape",
+        "Pixel 2 XL",
+        "Pixel 2 XL landscape",
+        "Pixel 3",
+        "Pixel 3 landscape",
+        "Pixel 4",
+        "Pixel 4 landscape",
+        "Pixel 4a (5G)",
+        "Pixel 4a (5G) landscape",
+        "Pixel 5",
+        "Pixel 5 landscape",
+        "Moto G4",
+        "Moto G4 landscape"
+      ]
+    },
+    "StringInput": {
+      "type": "string"
+    },
+    "SleepAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "sleep"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "timeout": {
+              "$ref": "#/definitions/NumberInput"
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "NumberInput": {
+      "type": "string"
+    },
+    "GoAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "go"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "url": {
+              "$ref": "#/definitions/StringInput"
+            }
+          },
+          "required": [
+            "page",
+            "url"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "RefrenceInput": {
+      "type": "string"
+    },
+    "GoBackAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "goBack"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            }
+          },
+          "required": [
+            "page"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "GoForwardAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "goForward"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            }
+          },
+          "required": [
+            "page"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "WaitForFunctionAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "waitForFunction"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "function": {
+              "$ref": "#/definitions/FunctionInput"
+            },
+            "timeout": {
+              "$ref": "#/definitions/NumberInput"
+            },
+            "polling": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "const": "raf"
+                },
+                {
+                  "type": "string",
+                  "const": "mutation"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          },
+          "required": [
+            "page",
+            "function"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "FunctionInput": {
+      "type": "string"
+    },
+    "WaitForNavigationAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "waitForNavigation"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "timeout": {
+              "$ref": "#/definitions/NumberInput"
+            },
+            "waitUntil": {
+              "$ref": "#/definitions/EnumInput%3CPuppeteerLifeCycleEvent%3E"
+            }
+          },
+          "required": [
+            "page"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "EnumInput<PuppeteerLifeCycleEvent>": {
+      "$ref": "#/definitions/PuppeteerLifeCycleEvent"
+    },
+    "PuppeteerLifeCycleEvent": {
+      "type": "string",
+      "enum": [
+        "load",
+        "domcontentloaded",
+        "networkidle0",
+        "networkidle2"
+      ]
+    },
+    "WaitForSelectorAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "waitForSelector"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "selector": {
+              "$ref": "#/definitions/StringInput"
+            },
+            "timeout": {
+              "$ref": "#/definitions/NumberInput"
+            }
+          },
+          "required": [
+            "page",
+            "selector"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "QuerySelectorAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "querySelector"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "selector": {
+              "$ref": "#/definitions/StringInput"
+            }
+          },
+          "required": [
+            "page",
+            "selector"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "QuerySelectorAllAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "querySelectorAll"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "selector": {
+              "$ref": "#/definitions/StringInput"
+            }
+          },
+          "required": [
+            "page",
+            "selector"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "FocusAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "focus"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "element": {
+              "$ref": "#/definitions/RefrenceInput"
+            }
+          },
+          "required": [
+            "page",
+            "element"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "TypeAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "type"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "content": {
+              "$ref": "#/definitions/StringInput"
+            }
+          },
+          "required": [
+            "page",
+            "content"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "PressAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "press"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "key": {
+              "$ref": "#/definitions/KeyInput"
+            }
+          },
+          "required": [
+            "page",
+            "key"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "KeyInput": {
+      "type": "string",
+      "enum": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "Power",
+        "Eject",
+        "Abort",
+        "Help",
+        "Backspace",
+        "Tab",
+        "Numpad5",
+        "NumpadEnter",
+        "Enter",
+        "\r",
+        "\n",
+        "ShiftLeft",
+        "ShiftRight",
+        "ControlLeft",
+        "ControlRight",
+        "AltLeft",
+        "AltRight",
+        "Pause",
+        "CapsLock",
+        "Escape",
+        "Convert",
+        "NonConvert",
+        "Space",
+        "Numpad9",
+        "PageUp",
+        "Numpad3",
+        "PageDown",
+        "End",
+        "Numpad1",
+        "Home",
+        "Numpad7",
+        "ArrowLeft",
+        "Numpad4",
+        "Numpad8",
+        "ArrowUp",
+        "ArrowRight",
+        "Numpad6",
+        "Numpad2",
+        "ArrowDown",
+        "Select",
+        "Open",
+        "PrintScreen",
+        "Insert",
+        "Numpad0",
+        "Delete",
+        "NumpadDecimal",
+        "Digit0",
+        "Digit1",
+        "Digit2",
+        "Digit3",
+        "Digit4",
+        "Digit5",
+        "Digit6",
+        "Digit7",
+        "Digit8",
+        "Digit9",
+        "KeyA",
+        "KeyB",
+        "KeyC",
+        "KeyD",
+        "KeyE",
+        "KeyF",
+        "KeyG",
+        "KeyH",
+        "KeyI",
+        "KeyJ",
+        "KeyK",
+        "KeyL",
+        "KeyM",
+        "KeyN",
+        "KeyO",
+        "KeyP",
+        "KeyQ",
+        "KeyR",
+        "KeyS",
+        "KeyT",
+        "KeyU",
+        "KeyV",
+        "KeyW",
+        "KeyX",
+        "KeyY",
+        "KeyZ",
+        "MetaLeft",
+        "MetaRight",
+        "ContextMenu",
+        "NumpadMultiply",
+        "NumpadAdd",
+        "NumpadSubtract",
+        "NumpadDivide",
+        "F1",
+        "F2",
+        "F3",
+        "F4",
+        "F5",
+        "F6",
+        "F7",
+        "F8",
+        "F9",
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F14",
+        "F15",
+        "F16",
+        "F17",
+        "F18",
+        "F19",
+        "F20",
+        "F21",
+        "F22",
+        "F23",
+        "F24",
+        "NumLock",
+        "ScrollLock",
+        "AudioVolumeMute",
+        "AudioVolumeDown",
+        "AudioVolumeUp",
+        "MediaTrackNext",
+        "MediaTrackPrevious",
+        "MediaStop",
+        "MediaPlayPause",
+        "Semicolon",
+        "Equal",
+        "NumpadEqual",
+        "Comma",
+        "Minus",
+        "Period",
+        "Slash",
+        "Backquote",
+        "BracketLeft",
+        "Backslash",
+        "BracketRight",
+        "Quote",
+        "AltGraph",
+        "Props",
+        "Cancel",
+        "Clear",
+        "Shift",
+        "Control",
+        "Alt",
+        "Accept",
+        "ModeChange",
+        " ",
+        "Print",
+        "Execute",
+        "\u0000",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        "Meta",
+        "*",
+        "+",
+        "-",
+        "/",
+        ";",
+        "=",
+        ",",
+        ".",
+        "`",
+        "[",
+        "\\",
+        "]",
+        "'",
+        "Attn",
+        "CrSel",
+        "ExSel",
+        "EraseEof",
+        "Play",
+        "ZoomOut",
+        ")",
+        "!",
+        "@",
+        "#",
+        "$",
+        "%",
+        "^",
+        "&",
+        "(",
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G",
+        "H",
+        "I",
+        "J",
+        "K",
+        "L",
+        "M",
+        "N",
+        "O",
+        "P",
+        "Q",
+        "R",
+        "S",
+        "T",
+        "U",
+        "V",
+        "W",
+        "X",
+        "Y",
+        "Z",
+        ":",
+        "<",
+        "_",
+        ">",
+        "?",
+        "~",
+        "{",
+        "|",
+        "}",
+        "\"",
+        "SoftLeft",
+        "SoftRight",
+        "Camera",
+        "Call",
+        "EndCall",
+        "VolumeDown",
+        "VolumeUp"
+      ],
+      "description": "All the valid keys that can be passed to functions that take user input, such as  {@link  Keyboard.press keyboard.press  }"
+    },
+    "ExecAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "exec"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "function": {
+              "$ref": "#/definitions/FunctionInput"
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RefrenceInput"
+              }
+            }
+          },
+          "required": [
+            "function",
+            "args"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "InjectScriptTagAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "injectScriptTag"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "content": {
+              "$ref": "#/definitions/CodeInput"
+            },
+            "url": {
+              "$ref": "#/definitions/StringInput"
+            },
+            "id": {
+              "$ref": "#/definitions/StringInput"
+            },
+            "type": {
+              "$ref": "#/definitions/StringInput"
+            }
+          },
+          "required": [
+            "page"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "CodeInput": {
+      "type": "string"
+    },
+    "InjectStyleTagAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "injectStyleTag"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "content": {
+              "$ref": "#/definitions/CodeInput"
+            }
+          },
+          "required": [
+            "page"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "SetCookieAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "setCookie"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "cookies": {
+              "$ref": "#/definitions/NonRefrencable%3Cdef-interface-1258880964-339669-341845-1258880964-313019-389307-1258880964-312780-389307-1258880964-295-579522-1258880964-0-579522-1258880964-0-579549596418935%5B%5D%3E"
+            }
+          },
+          "required": [
+            "page"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "NonRefrencable<def-interface-1258880964-339669-341845-1258880964-313019-389307-1258880964-312780-389307-1258880964-295-579522-1258880964-0-579522-1258880964-0-579549596418935[]>": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Protocol.Network.CookieParam"
+      }
+    },
+    "Protocol.Network.CookieParam": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Cookie name."
+        },
+        "value": {
+          "type": "string",
+          "description": "Cookie value."
+        },
+        "url": {
+          "type": "string",
+          "description": "The request-URI to associate with the setting of the cookie. This value can affect the default domain, path, source port, and source scheme values of the created cookie."
+        },
+        "domain": {
+          "type": "string",
+          "description": "Cookie domain."
+        },
+        "path": {
+          "type": "string",
+          "description": "Cookie path."
+        },
+        "secure": {
+          "type": "boolean",
+          "description": "True if cookie is secure."
+        },
+        "httpOnly": {
+          "type": "boolean",
+          "description": "True if cookie is http-only."
+        },
+        "sameSite": {
+          "$ref": "#/definitions/Protocol.Network.CookieSameSite",
+          "description": "Cookie SameSite type."
+        },
+        "expires": {
+          "$ref": "#/definitions/Protocol.Network.TimeSinceEpoch",
+          "description": "Cookie expiration date, session cookie if not set"
+        },
+        "priority": {
+          "$ref": "#/definitions/Protocol.Network.CookiePriority",
+          "description": "Cookie Priority."
+        },
+        "sameParty": {
+          "type": "boolean",
+          "description": "True if cookie is SameParty."
+        },
+        "sourceScheme": {
+          "$ref": "#/definitions/Protocol.Network.CookieSourceScheme",
+          "description": "Cookie source scheme type."
+        },
+        "sourcePort": {
+          "$ref": "#/definitions/Protocol.integer",
+          "description": "Cookie source port. Valid values are {-1, [1, 65535]}, -1 indicates an unspecified port. An unspecified port value allows protocol clients to emulate legacy cookie scope for the port. This is a temporary ability and it will be removed in the future."
+        },
+        "partitionKey": {
+          "type": "string",
+          "description": "Cookie partition key. The site of the top-level URL the browser was visiting at the start of the request to the endpoint that set the cookie. If not set, the cookie will be set as not partitioned."
+        }
+      },
+      "required": [
+        "name",
+        "value"
+      ],
+      "additionalProperties": false,
+      "description": "Cookie parameter object"
+    },
+    "Protocol.Network.CookieSameSite": {
+      "type": "string",
+      "enum": [
+        "Strict",
+        "Lax",
+        "None"
+      ],
+      "description": "Represents the cookie's 'SameSite' status: https://tools.ietf.org/html/draft-west-first-party-cookies"
+    },
+    "Protocol.Network.TimeSinceEpoch": {
+      "type": "number",
+      "description": "UTC time in seconds, counted from January 1, 1970."
+    },
+    "Protocol.Network.CookiePriority": {
+      "type": "string",
+      "enum": [
+        "Low",
+        "Medium",
+        "High"
+      ],
+      "description": "Represents the cookie's 'Priority' status: https://tools.ietf.org/html/draft-west-cookie-priority-00"
+    },
+    "Protocol.Network.CookieSourceScheme": {
+      "type": "string",
+      "enum": [
+        "Unset",
+        "NonSecure",
+        "Secure"
+      ],
+      "description": "Represents the source scheme of the origin that originally set the cookie. A value of \"Unset\" allows protocol clients to emulate legacy cookie scope for the scheme. This is a temporary ability and it will be removed in the future."
+    },
+    "Protocol.integer": {
+      "type": "number"
+    },
+    "ConditionAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "condition"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "function": {
+              "$ref": "#/definitions/FunctionInput"
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/RefrenceInput"
+              }
+            },
+            "then": {
+              "$ref": "#/definitions/RefrenceName"
+            },
+            "else": {
+              "$ref": "#/definitions/RefrenceName"
+            }
+          },
+          "required": [
+            "function",
+            "args",
+            "then",
+            "else"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    },
+    "FinishAction": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/RefrenceName"
+        },
+        "type": {
+          "type": "string",
+          "const": "finish"
+        },
+        "config": {
+          "type": "object",
+          "properties": {
+            "page": {
+              "$ref": "#/definitions/RefrenceInput"
+            },
+            "response": {
+              "$ref": "#/definitions/RefrenceInput"
+            }
+          },
+          "required": [
+            "response"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "name",
+        "type",
+        "config"
+      ],
+      "additionalProperties": false
+    }
+  }
+}
